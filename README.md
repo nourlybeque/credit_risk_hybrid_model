@@ -36,3 +36,8 @@ Performance Comparison Table 2
 | Random Forest       | 0.902187  | 0.129993    | 0.7875   | 0.744681  | 0.875  | 0.804598 |
 | Gradient Boosting   | 0.93      | 0.112071    | 0.825    | 0.809524  | 0.85   | 0.829268 |
 | SVM                 | 0.91375   | 0.126512    | 0.8125   | 0.777778  | 0.875  | 0.823529 |
+
+● Gradient Boosting achieved the best AUC and calibration.<br/>
+● Logistic Regression matched Gradient Boosting in F1 Score and maintained superior interpretability.<br/>
+● SVM delivered the highest recall, which is critical for default detection.<br/>
+● Qualitative features significantly improved all models' ability to discriminate and calibrate default risk.
