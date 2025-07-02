@@ -1,4 +1,4 @@
-The dataset contains information on 400 corporate borrowers from the commercial banking sector of Kazakhstan.<b/>
+The dataset contains information on 400 corporate borrowers from the commercial banking sector of Kazakhstan.<b\>
 It includes balanced classes: 50% defaulted and 50% non-defaulted borrowers.<b/>
 Each observation includes 32 features:<b/>
 ● 29 quantitative financial indicators (e.g., 
