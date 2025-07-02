@@ -3,8 +3,13 @@
 Objective:<br/>
 ● Develop and validate a hybrid model integrating qualitative and quantitative indicators to improve the prediction of default probability.
 <be/>
-Models were trained using only quantitative financial indicators. Performance was evaluated using standard classification metrics on a hold-out test set and cross-validation.<br/>
+Models were trained using only quantitative financial indicators. Performance was evaluated using standard classification metrics on a hold-out test set and cross-validation. To assess the probability of default, several classification models were trained and compared. Both linear and non-linear approaches were applied to evaluate performance, interpretability, and operational suitability for banking environments.<br/>
 
+Key Objectives of Model Benchmarking:<br/>
+● Evaluate predictive power (AUC, F1-score, precision, recall)<br/>
+● Assess calibration quality (Brier Score)<br/>
+● Compare interpretability vs complexity<br/>
+● Test impact of integrating qualitative variables.<br/>
 
 
 ## 1st stage<br/>
@@ -41,3 +46,38 @@ Performance Comparison Table 2
 ● Logistic Regression matched Gradient Boosting in F1 Score and maintained superior interpretability.<br/>
 ● SVM delivered the highest recall, which is critical for default detection.<br/>
 ● Qualitative features significantly improved all models' ability to discriminate and calibrate default risk.
+
+
+## 3rd stage<br/>
+Final Model Training and 5-fold Cross-Validation and Results<br/>
+The final logistic regression model, incorporating both quantitative and qualitative features, was trained using L2 regularization and evaluated through stratified 5-fold cross-validation to ensure 
+robustness and generalizability.
+
+Test Set Performance:
+| Metric      |  Value  |  
+|-------------|---------|
+| AUC         | 0.9144  |      
+| Brier Score | 0.1156  | 
+| Accuracy    | 0.8250  | 
+| Precision   | 0.8095  | 
+| Recall      | 0.8500  |
+| F1-score    | 0.8293  |
+
+The model shows strong discrimination and calibration on unseen data, confirming its suitability for practical credit risk assessment in banking. <br/>
+<br/>
+The confusion matrix provides a detailed view of classification performance on the test set, showing how well the model distinguishes between defaulted and non-defaulted borrowers. <br/>
+|        |       | Predicted | Predicted |  
+|--------|-------|-----------|-----------|
+|        |       | No        |  Yes      |
+| Actual | No    | 32        | 8         |
+| Actual | Yes   | 6         | 34        | 
+
+● True Positives (TP = 34): Defaulted borrowers correctly identified.<br/>
+● True Negatives (TN = 32): Non-defaulted borrowers correctly identified.<br/>
+● False Positives (FP = 8): Non-defaulters wrongly classified as defaulters.<br/>
+● False Negatives (FN = 6): Missed defaulters — potentially high-risk.<br/>
+<br/>
+Model Strengths: <br/>
+● High recall (85%) indicates strong ability to detect true defaulters.<br/>
+● Balanced precision and F1-score reflect overall stable performance.<br/>
+● Low number of false negatives is important for minimizing unexpected credit losses.<br/>
